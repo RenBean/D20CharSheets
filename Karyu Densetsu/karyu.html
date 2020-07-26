@@ -13,10 +13,10 @@
   <div class='sheet-3colrow'>
     <div class='sheet-col'>
       <h3>Aura:</h3>
-      <input type="number" style="width:40px;height:30px" name="attr_aura" placeholder="1" /> 
+      <input type="number" style="width:40px;height:30px" name="attr_aura" placeholder="0" /> 
     </div>
     <div class='sheet-col'>
-      <h3>Sincronização:</h3>
+      <h3>Sincronizacao:</h3>
       <input type="number" style="width:40px;height:30px" name="attr_sinx" placeholder="0" /> 
     </div>
     <div class='sheet-col'>
@@ -43,7 +43,7 @@
   </div>
   
   <div class='sheet-col lacos'>
-  <h3>Laços:</h3>
+  <h3>Lacos:</h3>
     <fieldset class="repeating_bonds" name="attr_bond">
         <tr>
             <td><input type="text" name="attr_bondname"></td>
@@ -66,11 +66,33 @@
 <div class='sheet-col'>
   <h3>Atributos:</h3>
     Agilidade <input type="number" name="attr_agi" class="atr" style="width:40px;height:30px"/>
-    Força <input type="number" name="attr_for" class="atr" style="width:40px;height:30px"/>
+         <button type="roll" name="attr_agicheck" title='agicheck' value=" [[{@{agi}d6sd + ?{Dado de Sincronizacao|0}d10sd}kh2+?{TÃ©cnica ou Ocupacao|0}]]"></button>
+
+    ForÃ§a <input type="number" name="attr_for" class="atr" style="width:40px;height:30px"/>
+          <button type="roll" name="attr_forcheck" title='forcheck' value=" [[{@{for}d6sd + ?{Dado de Sincronizacao|0}d10sd}kh2+?{TÃ©cnica ou Ocupacao|0}]]"></button>
+   
     Instinto <input type="number" name="attr_ins" class="atr" style="width:40px;height:30px"/>
-    Presença <input type="number" name="attr_pre" class="atr" style="width:40px;height:30px"/>
-    Razão <input type="number" name="attr_raz" class="atr" style="width:40px;height:30px"/>
+          <button type="roll" name="attr_inscheck" title='inscheck' value=" [[{@{ins}d6sd + ?{Dado de Sincronizacao|0}d10sd}kh2+?{TÃ©cnica ou Ocupacao|0}]]"></button>
+
+    PresenÃ§a <input type="number" name="attr_pre" class="atr" style="width:40px;height:30px"/>
+          <button type="roll" name="attr_precheck" title='precheck' value=" [[{@{pre}d6sd + ?{Dado de Sincronizacao|0}d10sd}kh2+?{TÃ©cnica ou Ocupacao|0}]]"></button>
+
+    RazÃ£o <input type="number" name="attr_raz" class="atr" style="width:40px;height:30px"/>
+           <button type="roll" name="attr_razcheck" title='razcheck' value=" [[{@{raz}d6sd + ?{Dado de Sincronizacao|0}d10sd}kh2+?{TÃ©cnica ou Ocupacao|0}]]"></button>
+
     Vontade <input type="number" name="attr_von" class="atr" style="width:40px;height:30px"/>
+            <button type="roll" name="attr_voncheck" title='vonccheck' value=" [[{@{von}d6sd + ?{Dado de Sincronizacao|0}d10sd}kh2+?{TÃ©cnica ou Ocupacao|0}]]"></button>
+
+</div>
+      
+      <p>&nbsp;</p>
+
+<div class='sheet-col VD'>
+ <h3>Vantagem/Desvantagem:</h3> 
+<input type="number" disabled=true name="attr_vd" class="atr" style="width:40px;height:30px"/> 
+	   <button type="roll" name="attr_VD" title='VDcheck' value=" [[{?{Valor com vantagem ou desvantagem|0}d6sd+?{Dado de SincronizaÃ§Ã£o|0}d10sd}kh2 + ?{TÃ©cnica ou OcupaÃ§Ã£o|0}]]"></button>
+
+
 </div>
 
 <p>&nbsp;</p>
@@ -80,23 +102,23 @@
       <h3>Atributos Derivados:</h3>
       <b>Limiar de Defesa</b> (Instinto) 
       <input type="number" disabled=true value="@{Aura}+@{agi}+@{ins}+@{evasao}+@{DefMod}" name="attr_DefIns"> <br/>
-      <b>Limiar de Defesa</b> (Razão) 
+      <b>Limiar de Defesa</b> (RazÃ£o) 
       <input type="number" disabled=true value="@{Aura}+@{agi}+@{raz}+@{evasao}+@{DefMod}" name="attr_DefRaz">
-      Bônus/Penalidade de Defesa 
+      BÃ´nus/Penalidade de Defesa 
       <input type="number" style="width:40px;height:30px" name="attr_DefMod" value="0" /> <br />
-      <b>Limiar de Proteção</b> 
+      <b>Limiar de Protecao</b> 
       <input type="number" disabled=true value="@{Aura}+@{For}+@{Bloqueio}+@{ProtMod}" name="attr_Prot">
-      Bônus/Penalidade de Proteção 
+      BÃ´nus/Penalidade de Protecao 
       <input type="number" style="width:40px;height:30px" name="attr_ProtMod" value="0" /> <br />
-      <b>Limiar de Canalização</b> 
+      <b>Limiar de Canalizacao</b> 
       <input type="number" disabled=true value="@{Aura}+@{CanMod}+2" name="attr_Can">
-      Bônus/Penalidade de Canalização 
+      BÃ´nus/Penalidade de Canalizacao 
       <input type="number" style="width:40px;height:30px" name="attr_CanMod" value="0" /> <br />
-      <b>Barra de Vigor</b> Máxima 
+      <b>Barra de Vigor</b> Maxima 
       <input type="number" disabled=true value="@{Aura}+@{for}+@{von}+@{VigMod}" name="attr_VigMax">
       Atual 
       <input type="number" value="@{VigMax}">
-      Bônus/Penalidade de Vigor: 
+      Bonus/Penalidade de Vigor: 
       <input type="number" style="width:40px;height:30px" name="attr_VigMod" value="0" /> <br />
     </div>
 </div>
@@ -106,15 +128,18 @@
 <div class='sheet-col injury'>
   <h3>Ferimento:</h3>
             <input type="checkbox" name="attr_injury" class="checkboxInjury">
+            <input type="checkbox" name="attr_injury" class="checkboxInjury">
+            <input type="checkbox" name="attr_injury" class="checkboxInjury">
+            <input type="checkbox" name="attr_injury" class="checkboxInjury">
 </div>
-
+    
   
 <p>&nbsp;</p>
 
 
 <div class='sheet-3colrow'>
 
-  <h3>Ocupações:</h3>
+  <h3>Ocupacoes:</h3>
 
     <div class='sheet-col'>
       Artista <select name="attr_artista" class="ocu" style="width:40px;height:30px">
@@ -135,22 +160,34 @@
         <option value="2">2</option>
         <option value="3">3</option>
         </select> <br />
-    </div>
-
-    <div class='sheet-col'>
-        Diplomata <select name="attr_diplomata" class="ocu" style="width:40px;height:30px" checked='true'>
+      Diplomata <select name="attr_diplomata" class="ocu" style="width:40px;height:30px" checked='true'>
           <option value="0">0</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
-          </select> <br />
+          </select> <br />  
+    </div>
+
+    <div class='sheet-col'>
         Engenheiro <select name="attr_engen" class="ocu" style="width:40px;height:30px">
           <option value="0">0</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
           </select> <br />
-        Místico <select name="attr_mistico" class="ocu" style="width:40px;height:30px" >
+         Medico <select name="attr_med" class="ocu" style="width:40px;height:30px">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          </select> <br />
+        Mistico <select name="attr_mistico" class="ocu" style="width:40px;height:30px" >
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          </select> <br />
+        Piloto <select name="attr_piloto" class="ocu" style="width:40px;height:30px%" >
           <option value="0">0</option>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -159,12 +196,6 @@
     </div>
 
     <div class='sheet-col'>
-        Piloto <select name="attr_piloto" class="ocu" style="width:40px;height:30px%" >
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          </select> <br />
         Trapaceiro <select name="attr_trapaceiro" class="ocu" style="width:40px;height:30px%" >
           <option value="0">0</option>
           <option value="1">1</option>
@@ -190,7 +221,7 @@
     </div>
     
     <div class='sheet-col'>
-      Agarrão <img src="https://cdn-images-1.medium.com/max/800/1*dKFHUTB3MRedKsNk1JbhiA.png" style="width:35px;height:35px">
+      Agarrao <img src="https://cdn-images-1.medium.com/max/800/1*dKFHUTB3MRedKsNk1JbhiA.png" style="width:35px;height:35px">
           <select name="attr_agarrao" class="esl" style="width:40px;height:30px">
             <option value="0">0</option>
             <option value="1">1</option>
@@ -222,7 +253,7 @@
 
   <div class='sheet-col'>
 
-    Projétil <img src="https://cdn-images-1.medium.com/max/800/1*Nsi0Ol2lRVvuNOYJb8oxrQ.png" style="width:35px;height:35px">
+    Projetil <img src="https://cdn-images-1.medium.com/max/800/1*Nsi0Ol2lRVvuNOYJb8oxrQ.png" style="width:35px;height:35px">
       <select name="attr_projetil" class="esl" style="width:40px;height:30px" checked='true'>
         <option value="0">0</option>
         <option value="1">1</option>
@@ -242,7 +273,7 @@
 
       <p>&nbsp;</p>
 
-    Evasão <img src="https://cdn-images-1.medium.com/max/800/1*eBRhDYyN_mFCbGZ6Cqhuww.png" style="width:35px;height:35px">
+    Evasao <img src="https://cdn-images-1.medium.com/max/800/1*eBRhDYyN_mFCbGZ6Cqhuww.png" style="width:35px;height:35px">
         <select name="attr_evasao" class="esl" style="width:40px;height:30px">
         <option value="0">0</option>
         <option value="1">1</option>
@@ -259,39 +290,39 @@
     <h3>Trunfos:</h3>
 
     <input type="text" name="trunfo1" placeholder="Trunfo 1" /><br />
-    <textarea name="attr_trunfo1" placeholder="Descrição do Trunfo" rows="10" cols="40"></textarea><br />
+    <textarea name="attr_trunfo1" placeholder="DescriÃ§Ã£o do Trunfo" rows="10" cols="40"></textarea><br />
     <input type="text" name="trunfo2" placeholder="Trunfo 2" /><br />
-    <textarea name="attr_trunfo2" placeholder="Descrição do Trunfo" rows="10" cols="40"></textarea><br />
+    <textarea name="attr_trunfo2" placeholder="DescriÃ§Ã£o do Trunfo" rows="10" cols="40"></textarea><br />
   </div>
 
   <div class='sheet-col'>
 
-    <h3>Técnicas:</h3>
+    <h3>TÃ©cnicas:</h3>
       <fieldset class="repeating_techs" name="attr_techs">            
-        <input type="text" name="attr_tech" placeholder="Nome da Técnica"/> <br />    
+        <input type="text" name="attr_tech" placeholder="Nome da TÃ©cnica"/> <br />    
 
-        <span>Tipo de Técnica:</span><br />
+        <span>Tipo de Tecnica:</span><br />
         <select name="attr_skilltype" class="tipo" checked='true'>
-          <option>Agarrão</option>
+          <option>Agarrao</option>
           <option>Bloqueio</option>
           <option>Combo</option>
-          <option>Evasão</option>
+          <option>Evasao</option>
           <option>Golpe</option>
           <option>Nenhum</option>
-          <option>Projétil</option>
+          <option>Projetil</option>
         </select> <br />
         
-        <span>Elemento de Técnica:</span><br />
+        <span>Elemento de Tecnica:</span><br />
         <select name="attr_skillelement" class="tipo" checked='true'>
-          <option>Água</option>
+          <option>Agua</option>
           <option>Ar</option>
-          <option>Éter</option>
+          <option>Eter</option>
           <option>Fogo</option>
           <option>Terra</option>
         </select><br />
 
-        <span>Descrição da Técnica:</span>
-        <textarea name="attr_skilldescription" placeholder="Descrição da Técnica" rows="10" cols="40"></textarea><br />
+        <span>DescriÃ§Ã£o da Tecnica:</span>
+        <textarea name="attr_skilldescription" placeholder="DescriÃ§Ã£o da TÃ©cnica" rows="10" cols="40"></textarea><br />
 
           Nagen <input type="number" style="width:40px;height:30px" name="attr_nagen"> Dano <input type="number" style="width:40px;height:30px" name="attr_damage">
           Ougi <input type="checkbox" name="attr_ougi"> <input type:"text" style="width:300px" placeholder="Efeito do Ougi" name="attr_ougieffect"><br />
